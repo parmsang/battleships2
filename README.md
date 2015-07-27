@@ -20,4 +20,4 @@ Opponent
 OpponentShip                               sunk?, size?, direction?, hit?
 
 
-OpponentBoard                    place_ship, constrain_ship,overlap?, fire    
+OpponentBoard                    place_ship, constrain_ship,overlap?, fire
