@@ -1,4 +1,4 @@
 class Ship
-  def place
+  def place(ship)
   end
 end
