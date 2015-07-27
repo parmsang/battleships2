@@ -1,10 +1,12 @@
 require 'ship'
 
 describe Ship do
-  #it { is_expected.to respond_to :place}
+  describe '#sizes' do
+    xit 'prompts the player to choose from range of size ships' do
 
-  it {is_expected.to respond_to(:place).with(1).argument}
-
+    end
   end
-
+  describe '#direction' do
+    xit 'choose ship\'s direction'
+  end
 end
