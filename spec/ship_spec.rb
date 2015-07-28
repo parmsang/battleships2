@@ -1,12 +1,11 @@
 require 'ship'
 
 describe Ship do
-  describe '#sizes' do
-    xit 'prompts the player to choose from range of size ships' do
-
+  describe '#initialize#size' do
+  	let(:ship) {Ship.new(3)}
+    it 'allows players to choose from a range of ship sizes' do	
+    	expect(ship.size).to eq 3
     end
   end
-  describe '#direction' do
-    xit 'choose ship\'s direction'
-  end
 end
+	
