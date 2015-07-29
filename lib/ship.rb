@@ -1,25 +1,20 @@
 
 class Ship
-
-  attr_accessor :size, :direction
-
-  def initialize(size, direction)
-    @size = size
-    @direction = direction
-    # @directions = ['North', 'South', 'East', 'West']
+  def initialize
+    @size_choices = [1]
+    @rotations = ["NS", "EW"]
   end
 
+  attr_reader :size, :rotation
 
+  def size_choices(size)
+    fail "Size choice not valid" unless @size_choices.include?(size)
+    @size = size
+  end
 
-    # puts "Choose from these ship sizes (in units): 2, 3, 4, 5"
-    #   ship_size = gets.chomp
-    # fail "That is not a valid selection" if @sizes.delete(ship_size) != ship_size
-    # ship_size
-
-
-  # def direction ()
-  #   puts "Choose direction to face your ship: North, South, East, West"
-  #     direction = gets.chomp
-  # end
+  def rotate(direction)
+    fail "Direction choice not valid" unless @rotations.include?(direction)
+    @rotation = direction
+  end
 
 end
