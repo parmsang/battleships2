@@ -4,11 +4,11 @@ describe Ship do
   describe '#size_choices' do
     it { is_expected.to respond_to(:size_choices).with(1).argument }
 
-    it 'should raise an error if choice is not valid' do
+    it 'raises an error if choice is not valid' do
       expect { subject.size_choices(!1) }.to raise_error 'Size choice not valid'
     end
 
-    it 'should create a ship the size of the input' do
+    it 'creates a ship the size of the input' do
       subject.size_choices(1)
       expect(subject.size).to eq 1
     end
@@ -17,13 +17,18 @@ describe Ship do
   describe '#rotate' do
     it { is_expected.to respond_to(:rotate).with(1).argument }
 
-    it 'should raise an error if choice is not valid' do
-      expect {subject.rotate('agfgf')}.to raise_error 'Direction choice not valid'
+    it 'raises an error if choice is not a direction' do
+      expect { subject.rotate('agfgf') }.to raise_error 'Direction choice not valid'
     end
 
-    it 'should specify ship direction' do
-      subject.rotate('NS' || 'EW')
-      expect(subject.rotation).to eq ('NS' || 'EW')
+    it 'constrains ship direction to valid directions only' do
+      invalid_direction = 'ES'
+      expect { subject.rotate(invalid_direction) }.to raise_error 'Direction choice not valid'
+    end
+
+    it 'specifies ship direction' do
+      subject.rotate('NS')
+      expect(subject.rotation).to eq 'NS'
     end
   end
 end
