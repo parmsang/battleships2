@@ -11,5 +11,9 @@ describe Board do
     it "Should raise an error if ship is not placed on board" do
       expect {subject.place()}
     end
+    it "raise error if ship is placed on existing ship" do
+      subject.place(ship,1,1)
+      expect{subject.place(ship,1,1)}.to raise_error "Existing ship already at that location!"
+    end
   end
 end

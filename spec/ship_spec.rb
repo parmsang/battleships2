@@ -22,7 +22,7 @@ describe Ship do
     end
 
     it 'constrains ship direction to valid directions only' do
-      invalid_direction = 'ES'
+      invalid_direction = 'dgdfgfgfdg'
       expect { subject.rotate(invalid_direction) }.to raise_error 'Direction choice not valid'
     end
 

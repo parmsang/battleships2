@@ -8,6 +8,8 @@ class Board
   attr_reader :board
 
   def place(ship, x, y)
+    fail "Existing ship already at that location!" if board[y-1][x-1]
     board[y-1][x-1] = ship
   end
+
 end
