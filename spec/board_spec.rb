@@ -17,22 +17,23 @@ describe Board do
     end
   end
   describe "#fire" do
-    it { is_expected.to respond_to(:fire).with(2).arguments }
+    it { is_expected.to respond_to(:fire).with(3).arguments }
     it "at the board" do
-      subject.fire(1,1)
+      subject.fire(ship,1,1)
       expect(subject.fired[0][0]).to eq true
     end
-    it "raises erro if fired outside of the board" do 
-      expect{subject.fire(0,0)}.to raise_error "Fired outside of board boundaries!"
+    it "raises error if fired outside of the board" do 
+      expect{subject.fire(ship,0,0)}.to raise_error "Fired outside of board boundaries!"
     end
     it "raises error if fired at same place twice" do
-      subject.fire(1,1)
-      expect{subject.fire(1,1)}.to raise_error "Already fired at that location!"
+      subject.fire(ship,1,1)
+      expect{subject.fire(ship,1,1)}.to raise_error "Already fired at that location!"
     end
-    it "should hit the ship" do 
-      board.place(ship,1,1)
-      board.fire(1,1)
-      expect(ship).to have_received (:hit)
+    it "should hit the ship" do
+      ship = spy :ship
+      subject.place(ship,1,1)
+      subject.fire(ship,1,1)
+      expect(ship).to have_received :hit
     end
   end
 end
