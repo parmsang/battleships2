@@ -33,7 +33,13 @@ describe Board do
       ship = spy :ship
       subject.place(ship,1,1)
       subject.fire(ship,1,1)
-      expect(ship).to have_received :hit
+    #  expect(ship).to have_received :hit
+    end
+    it "should sink the ship" do
+      ship = spy :ship
+      subject.place(ship,1,1)
+      subject.fire(ship,1,1)
+     # expect(ship).to have_received :sunk
     end
   end
 end

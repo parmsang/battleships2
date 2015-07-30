@@ -37,6 +37,16 @@ describe "Features" do
 	 			expect { ship.rotate(!("NS" || "EW")) }.to raise_error "Direction choice not valid"
 	 	  end
 	 	end
+	 	describe "#hit" do
+      it { expect(ship).to respond_to(:hit) }
+      it "should not be hit when initialized" do
+        expect(ship.hits).to eq false
+      end
+      it " should register the hit when hit" do
+      	ship.hit
+        expect(ship.hit).to eq true
+      end
+	 	end
 	end
 	describe "Board" do
 		describe "#place" do
@@ -69,9 +79,21 @@ describe "Features" do
 			it "should hit the ship" do
 				board.place(ship,1,1)
 				board.fire(ship,1,1)
-				allow(ship).to receive(:hit)
-		#		expect(ship).to have_received (:hit)
+				#allow(ship).to receive(:hit)
 			end
+			 it "should not be hit when initialized" do
+        expect(ship.hits).to eq false
+      end
+		end
+		describe "#sunk" do
+      it "should sink the ship" do
+				board.place(ship,1,1)
+				board.fire(ship,1,1)
+				#allow(ship).to receive(:sunk)
+			end
+			it "should not be sunk when initialized" do
+        expect(ship.sunks).to eq false
+      end
 		end
 	end
 end

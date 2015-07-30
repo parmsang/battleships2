@@ -30,5 +30,24 @@ describe Ship do
       subject.rotate('NS')
       expect(subject.rotation).to eq 'NS'
     end
+  describe "#hit" do
+      it { is_expected.to respond_to(:hit) }
+      it "should not be hit when initialized" do
+        expect(subject.hits).to eq false
+      end
+      it " should register the hit when hit" do
+        subject.hit
+        expect(subject.hit).to eq true
+      end
+    end
+  end
+  describe "#sunk" do
+    it "should not be sunk when initialized" do
+      expect(subject.sunks).to eq false
+    end
+    it "should sink the ship" do
+      subject.hit
+      expect(subject.sunk).to eq true
+    end
   end
 end
