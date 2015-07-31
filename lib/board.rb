@@ -1,4 +1,6 @@
 require_relative 'ship'
+require_relative 'shiptypes'
+
 class Board
   def initialize
     @ships = []

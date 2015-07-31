@@ -1,11 +1,15 @@
+require_relative 'shiptypes'
 
 class Ship
-  def initialize
-    @size_choices = [1]
-    @rotations = ["NS", "EW"]
-    @query_if_hit = false
-    @sunk = false
-  end
+  include ShipTypes
+
+   def initialize(size = 5)
+     @size_choices = [1]
+     @rotations = ["NS", "EW"]
+     @query_if_hit = false
+     @sunk = false
+     @size = size
+   end
 
   attr_reader :size, :rotation, :query_if_hit, :sunk
 
@@ -19,7 +23,7 @@ class Ship
     @rotation = direction
   end
 
-   def hit
+  def hit
     @query_if_hit = true
   end
 
