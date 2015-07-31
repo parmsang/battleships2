@@ -79,7 +79,7 @@ describe "Features" do
 			it "should hit the ship" do
 				board.place(ship,1,1)
 				board.fire(1,1)
-				#allow(ship).to receive(:hit)
+				expect(ship.query_if_hit).to eq true
 			end
 			 it "should not be hit when initialized" do
         expect(ship.query_if_hit).to eq false
@@ -89,7 +89,7 @@ describe "Features" do
       it "should sink the ship" do
 				board.place(ship,1,1)
 				board.fire(1,1)
-				#allow(ship).to receive(:sunk)
+				expect(ship.sunk).to eq true
 			end
 			it "should not be sunk when initialized" do
         expect(ship.sunk).to eq false

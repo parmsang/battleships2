@@ -19,7 +19,7 @@ class Ship
     @rotation = direction
   end
 
-  def hit
+   def hit
     @query_if_hit = true
   end
 

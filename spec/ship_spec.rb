@@ -1,6 +1,7 @@
 require 'ship'
 
 describe Ship do
+  let(:ship) {Ship.new}
   describe '#size_choices' do
     it { is_expected.to respond_to(:size_choices).with(1).argument }
 
