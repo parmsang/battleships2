@@ -28,4 +28,12 @@ class Board
     end
   end
 
+  #private
+
+  attr_reader :ship_limit
+
+  def ship_range(ship, x, y)
+    i = 0
+    ship.size_choices(4).times {ship.rotation == "NS" ? board[y+i-1][x-1] = ship : board[y-1][x+i-1] = ship ; i+=1}
+  end
 end

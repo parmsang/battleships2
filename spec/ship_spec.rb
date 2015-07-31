@@ -40,6 +40,7 @@ describe Ship do
         subject.hit
         expect(subject.query_if_hit).to eq true
       end
+  
     end
   end
   describe "#sunk" do

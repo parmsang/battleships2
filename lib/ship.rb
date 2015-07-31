@@ -3,23 +3,23 @@ require_relative 'shiptypes'
 class Ship
   include ShipTypes
 
-   def initialize(size = 5)
-     @size_choices = [1]
-     @rotations = ["NS", "EW"]
-     @query_if_hit = false
-     @sunk = false
-     @size = size
-   end
+  def initialize(size = 5)
+    @size_choices = [1,2,3,4,5]
+    @rotations = %w(NS EW)
+    @query_if_hit = false
+    @sunk = false
+    @size = size
+ end
 
   attr_reader :size, :rotation, :query_if_hit, :sunk
 
   def size_choices(size)
-    fail "Size choice not valid" unless @size_choices.include?(size)
+    fail 'Size choice not valid' unless @size_choices.include?(size)
     @size = size
   end
 
   def rotate(direction)
-    fail "Direction choice not valid" unless @rotations.include?(direction)
+    fail 'Direction choice not valid' unless @rotations.include?(direction)
     @rotation = direction
   end
 
