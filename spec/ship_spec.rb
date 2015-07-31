@@ -33,21 +33,21 @@ describe Ship do
   describe "#hit" do
       it { is_expected.to respond_to(:hit) }
       it "should not be hit when initialized" do
-        expect(subject.hits).to eq false
+        expect(subject.query_if_hit).to eq false
       end
       it " should register the hit when hit" do
         subject.hit
-        expect(subject.hit).to eq true
+        expect(subject.query_if_hit).to eq true
       end
     end
   end
   describe "#sunk" do
     it "should not be sunk when initialized" do
-      expect(subject.sunks).to eq false
+      expect(subject.sunk).to eq false
     end
     it "should sink the ship" do
       subject.hit
-      expect(subject.sunk).to eq true
+      expect(subject.sunk?).to eq true
     end
   end
 end

@@ -5,7 +5,7 @@ describe "Features" do
 	let(:board) { Board.new }
 	let(:ship) { Ship.new }
 	describe "Ship" do
-		describe "#size_choices" do 
+		describe "#size_choices" do
 		 	it { expect(ship).to respond_to(:size_choices).with(1).argument }
 			it 'can choose a size for the ship' do
 		    expect { ship.size_choices(1) }.not_to raise_error
@@ -40,18 +40,18 @@ describe "Features" do
 	 	describe "#hit" do
       it { expect(ship).to respond_to(:hit) }
       it "should not be hit when initialized" do
-        expect(ship.hits).to eq false
+        expect(ship.query_if_hit).to eq false
       end
       it " should register the hit when hit" do
       	ship.hit
-        expect(ship.hit).to eq true
+        expect(ship.query_if_hit).to eq true
       end
 	 	end
 	end
 	describe "Board" do
 		describe "#place" do
 			it { expect(board).to respond_to(:place).with(3).argument }
-			it "place ship on board location" do 
+			it "place ship on board location" do
 				board.place(ship,1,1)
 				expect(board.board[0][0]).to eq ship
 			end
@@ -64,35 +64,35 @@ describe "Features" do
 			end
 		end
 		describe "#fire" do
-			it { expect(board).to respond_to(:fire).with(3).argument}
-			it "should fire at the board" do 
-				board.fire(ship,1,1)
+			it { expect(board).to respond_to(:fire).with(2).argument}
+			it "should fire at the board" do
+				board.fire(1,1)
 				expect(board.fired[0][0]).to eq true
 			end
-			it "raises error if fired outside of the board" do 
-				expect{board.fire(ship,0,0)}.to raise_error "Fired outside of board boundaries!"
+			it "raises error if fired outside of the board" do
+				expect{board.fire(0,0)}.to raise_error "Fired outside of board boundaries!"
 			end
 			it "raises error if fired at same place twice" do
-				board.fire(ship,1,1)
-				expect{board.fire(ship,1,1)}.to raise_error "Already fired at that location!"
+				board.fire(1,1)
+				expect{board.fire(1,1)}.to raise_error "Already fired at that location!"
 			end
 			it "should hit the ship" do
 				board.place(ship,1,1)
-				board.fire(ship,1,1)
+				board.fire(1,1)
 				#allow(ship).to receive(:hit)
 			end
 			 it "should not be hit when initialized" do
-        expect(ship.hits).to eq false
+        expect(ship.query_if_hit).to eq false
       end
 		end
 		describe "#sunk" do
       it "should sink the ship" do
 				board.place(ship,1,1)
-				board.fire(ship,1,1)
+				board.fire(1,1)
 				#allow(ship).to receive(:sunk)
 			end
 			it "should not be sunk when initialized" do
-        expect(ship.sunks).to eq false
+        expect(ship.sunk).to eq false
       end
 		end
 	end

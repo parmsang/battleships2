@@ -14,12 +14,15 @@ class Board
     board[y-1][x-1] = ship
   end
 
-  def fire(ship, x,y)
+  def fire(x,y)
   	fail "Fired outside of board boundaries!" if x < 1 || x > @board_size[0] || y < 1 || y > @board_size[1]
   	fail "Already fired at that location!" if fired[y-1][x-1] == true
   	fired[y-1][x-1] = true
-    board[y-1][x-1] != nil ? true : false
-    board[y-1][x-1] != nil ? true : false
+    if board[y-1][x-1] != nil
+      board[y-1][x-1] = board[y-1][x-1].hit
+    end
+
+
   end
 
 end

@@ -3,11 +3,11 @@ class Ship
   def initialize
     @size_choices = [1]
     @rotations = ["NS", "EW"]
-    @hits = false
-    @sunks = false
+    @query_if_hit = false
+    @sunk = false
   end
 
-  attr_reader :size, :rotation, :hits, :sunks
+  attr_reader :size, :rotation, :query_if_hit, :sunk
 
   def size_choices(size)
     fail "Size choice not valid" unless @size_choices.include?(size)
@@ -20,11 +20,10 @@ class Ship
   end
 
   def hit
-    hits = true
+    @query_if_hit = true
   end
 
-  def sunk
-    sunks = true
+  def sunk?
+    @sunk = true
   end
-
 end
