@@ -4,6 +4,19 @@ require "ship"
 describe "Features" do
 	let(:board) { Board.new }
 	let(:ship) { Ship.new }
+	describe 'ShipTypes' do
+    describe 'create ships by using the ship names' do
+      it 'create a destroyer' do
+        shiptypes = ShipTypes.destroyer
+        expect(shiptypes.size).to eq ShipTypes::DESTROYER_SIZE
+      end
+
+      it 'create a battleship' do
+        shiptypes = ShipTypes.battleship
+        expect(shiptypes.size).to eq ShipTypes::BATTLESHIP_SIZE
+      end
+    end
+	end
 	describe "Ship" do
 		describe "#size_choices" do
 		 	it { expect(ship).to respond_to(:size_choices).with(1).argument }
@@ -33,7 +46,7 @@ describe "Features" do
 	 			ship.rotate("EW")
 	 			expect(ship.rotation).to eq "EW"
 	 		end
-	 		it "raises an arror if choice is not valid" do
+	 		it "raises an error if choice is not valid" do
 	 			expect { ship.rotate(!("NS" || "EW")) }.to raise_error "Direction choice not valid"
 	 	  end
 	 	end
